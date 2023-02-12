@@ -19,3 +19,74 @@ Run `npx nx connect-to-nx-cloud` to enable [remote caching](https://nx.app) and 
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev) to learn more.
+
+# Reminder
+
+## Create an NX workspace
+
+Run `npx create-nx-workspace@latest <workspace name>`
+
+Select the following options: 
+
+- integrated
+- angular-monorepo
+- `<app name>`
+- scss
+- No
+
+## Update the nx generators
+
+In nx.json, add the following lines: 
+
+```json
+{
+  ...
+  "generators": {
+    "@nrwl/angular:application": {
+      ...
+      "standalone": true,
+      "routing": true
+    },
+    "@nrwl/angular:library": {
+      ...
+      "buildable": true,
+      "publishable": true,
+      "changeDetection": "OnPush",
+      "importPath": "nx-lib-import-path",
+      "standalone": true
+    },
+    "@nrwl/angular:component": {
+      ...
+      "standalone": true,
+      "changeDetection": "OnPush"
+    },
+    "@ngrx/schematics:feature": {
+      "group": true
+    }
+  }
+}
+```
+
+## Create a new app
+
+Run `nx g app nx-app`
+
+## Create a new lib
+
+Run `nx g lib nx-lib --importPath=<path to publishable library>`
+
+## Create a component for an app
+
+Run `nx g c <component name> --path=apps/<app name>/src/app/<path to component> --project=<app name>`
+
+## Create a component for a lib
+
+Run `nx g c <component name> --export --path=libs/<lib name>/src/lib/<path to component> --project=<lib name>`
+
+## Add NgRx to an app 
+
+Run `nx g ngrx origin --parent=apps/<app name>/src/main.ts --root --facade=false`
+
+## Add an NgRx feature to an app
+
+Run `nx g f <path to ngrx folder from src/app>/<feature name> --project=<app name> --module=<path to component>/<component file>`
