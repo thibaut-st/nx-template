@@ -86,6 +86,12 @@
     },
     "@ngrx/schematics:feature": {
       "group": true
+    },
+    "@nrwl/angular:ngrx": {
+      "root": false,
+      "directory": "data-access",
+      "facade": true,
+      "route": ""
     }
   }
 }

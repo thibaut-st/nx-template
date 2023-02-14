@@ -6,7 +6,8 @@
 
 ## Development server
 
-Run `nx serve nx-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Run `nx serve nx-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you
+change any of the source files.
 
 ## Understand this workspace
 
@@ -26,7 +27,7 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
 
 Run `npx create-nx-workspace@latest <workspace name>`
 
-Select the following options: 
+Select the following options:
 
 - integrated
 - angular-monorepo
@@ -36,7 +37,7 @@ Select the following options:
 
 ## Update the nx generators
 
-In nx.json, add the following lines: 
+In nx.json, add the following lines:
 
 ```json
 {
@@ -60,8 +61,11 @@ In nx.json, add the following lines:
       "standalone": true,
       "changeDetection": "OnPush"
     },
-    "@ngrx/schematics:feature": {
-      "group": true
+    "@nrwl/angular:ngrx": {
+      "root": false,
+      "directory": "data-access",
+      "facade": true,
+      "route": ""
     }
   }
 }
@@ -83,10 +87,12 @@ Run `nx g c <component name> --path=apps/<app name>/src/app/<path to component> 
 
 Run `nx g c <component name> --export --path=libs/<lib name>/src/lib/<path to component> --project=<lib name>`
 
-## Add NgRx to an app 
+## Add NgRx to an app
 
 Run `nx g ngrx origin --parent=apps/<app name>/src/main.ts --root --facade=false`
 
 ## Add an NgRx feature to an app
 
-Run `nx g f <path to ngrx folder from src/app>/<feature name> --project=<app name> --module=<path to component>/<component file>`
+Run `nx g ngrx products --facade=true --root=false --route=<route 'path'> --parent=apps/<app name>/src/app/<path to 'xxx.routes.ts'>`
+
+[//]: # 'Run `nx g f <path to ngrx folder from src/app>/<feature name> --group --project=<app name> --module=<path to component>/<component file>`'
