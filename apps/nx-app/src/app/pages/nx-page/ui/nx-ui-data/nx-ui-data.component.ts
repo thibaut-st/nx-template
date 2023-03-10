@@ -15,8 +15,13 @@ export class NxUiDataComponent {
   @Input() selectedNxData?: NxDataEntity
 
   @Output() selectedNxId: EventEmitter<string | number> = new EventEmitter<string | number>()
+  @Output() deletedNxId: EventEmitter<string | number> = new EventEmitter<string | number>()
 
   selectNxData(id: string | number) {
     this.selectedNxId.emit(id)
+  }
+
+  deleteNxData(id: string | number) {
+    this.deletedNxId.emit(id)
   }
 }

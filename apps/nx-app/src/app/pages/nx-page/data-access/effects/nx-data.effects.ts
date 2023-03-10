@@ -11,7 +11,8 @@ import {NxDataEntity} from '../models/nx-data.models'
 export class NxDataEffects {
   private actions$ = inject(Actions)
 
-  constructor(private nxDataService: NxDataService) {}
+  constructor(private nxDataService: NxDataService) {
+  }
 
   init$ = createEffect(() =>
     this.actions$.pipe(
@@ -40,6 +41,21 @@ export class NxDataEffects {
       catchError(error => {
         console.error('Error', error)
         return of(NxDataActions.addNxDataFailure({error}))
+      })
+    )
+  )
+
+  delete$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(NxDataActions.deleteNxData),
+      switchMap(action =>
+        this.nxDataService
+          .deleteNxData(action.deleteId)
+          .pipe(map((deletedNxData: NxDataEntity) => NxDataActions.deleteNxDataSuccess({deleteId: deletedNxData.id})))
+      ),
+      catchError(error => {
+        console.error('Error', error)
+        return of(NxDataActions.deleteNxDataFailure({error}))
       })
     )
   )

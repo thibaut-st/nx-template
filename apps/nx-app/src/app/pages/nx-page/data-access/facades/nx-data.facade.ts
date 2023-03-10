@@ -33,4 +33,8 @@ export class NxDataFacade {
   addNxData(newNxData: NxDataEntity) {
     this.store.dispatch(NxDataActions.addNxData({newNxData: newNxData}))
   }
+
+  delete(id: string | number) {
+    this.store.dispatch(NxDataActions.deleteNxData({deleteId: id}))
+  }
 }

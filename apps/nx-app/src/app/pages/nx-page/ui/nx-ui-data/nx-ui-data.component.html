@@ -3,7 +3,11 @@
 <div>
   <p>All Nx data</p>
   <ul>
-    <li *ngFor="let data of allNxData">{{ data | json }} <button type="button" (click)="selectNxData(data.id)">select</button> </li>
+    <li *ngFor="let data of allNxData">
+      {{ data | json }}
+      <button type="button" (click)="selectNxData(data.id)">select</button>
+      <button type="button" (click)="deleteNxData(data.id)">delete</button>
+    </li>
   </ul>
 </div>
 <div *ngIf="selectedNxData">

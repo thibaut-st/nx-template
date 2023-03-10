@@ -21,7 +21,6 @@ export const nxDataAdapter: EntityAdapter<NxDataEntity> = createEntityAdapter<Nx
 
 export const initialNxDataState: NxDataState = nxDataAdapter.getInitialState({
   // set initial required properties
-  // nxData: [],
   loaded: false,
   loading: false,
 })
@@ -42,7 +41,9 @@ const reducer = createReducer(
     selectedId: selectedId,
   })),
   on(NxDataActions.addNxDataSuccess, (state, {newNxData}) => nxDataAdapter.addOne(newNxData, state)),
-  on(NxDataActions.addNxDataFailure, (state, {error}) => ({...state, error}))
+  on(NxDataActions.addNxDataFailure, (state, {error}) => ({...state, error})),
+  on(NxDataActions.deleteNxDataSuccess, (state, {deleteId}) => nxDataAdapter.removeOne(Number(deleteId), state)),
+  on(NxDataActions.deleteNxDataFailure, (state, {error}) => ({...state, error}))
 )
 
 export function nxDataReducer(state: NxDataState | undefined, action: Action) {

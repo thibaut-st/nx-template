@@ -10,11 +10,12 @@
   <button type="button" (click)="loadNxData()">Load data</button>
 
   <ng-container *ngIf="nxData.loaded; else notLoaded">
-    <button type="button" (click)="addNxData()">Add data</button>
+    <button type="button" (click)="add()">Add data</button>
     <nx-template-nx-ui-data
       [allNxData]="nxData.allNxData"
       [selectedNxData]="nxData.selectedNxData"
-      (selectedNxId)="nxDataFacade.select($event)">
+      (selectedNxId)="nxDataFacade.select($event)"
+      (deletedNxId)="nxDataFacade.delete($event)">
     </nx-template-nx-ui-data>
   </ng-container>
   <ng-template #notLoaded>

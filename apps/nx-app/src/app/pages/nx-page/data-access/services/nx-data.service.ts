@@ -36,10 +36,22 @@ export class NxDataService {
    */
   addNxData(newNxData: NxDataEntity): Observable<NxDataEntity> {
     const currentData = this.mockNxDataBehaviorSubject.value
-    if (currentData.find((nxData: NxDataEntity) => newNxData.id === nxData.id)) throw new Error('ERROR')
+    if (currentData.find((nxData: NxDataEntity) => newNxData.id === nxData.id)) throw new Error('ERROR ADD')
 
     this.mockNxDataBehaviorSubject.next([...this.mockNxDataBehaviorSubject.value, newNxData])
 
     return of(newNxData)
+  }
+
+  deleteNxData(deleteId: number | string): Observable<NxDataEntity> {
+    const currentData = this.mockNxDataBehaviorSubject.value
+
+    const deleteNxData: NxDataEntity | undefined = currentData.find((nxData: NxDataEntity) => nxData.id === deleteId)
+
+    if (!deleteNxData) throw new Error('ERROR DELETE')
+
+    this.mockNxDataBehaviorSubject.next(currentData.filter((nxData: NxDataEntity) => nxData.id !== deleteId))
+
+    return of(deleteNxData)
   }
 }

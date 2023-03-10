@@ -21,7 +21,7 @@ export class NxFeatureNgrxComponent {
     this.nxDataFacade.init()
   }
 
-  addNxData() {
+  add() {
     const newNxData: NxDataEntity = {id: 15, name: 'test 15'}
     this.nxDataFacade.addNxData(newNxData)
   }
