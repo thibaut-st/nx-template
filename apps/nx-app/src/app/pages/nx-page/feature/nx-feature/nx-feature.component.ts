@@ -1,16 +1,15 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { NxServiceService } from '../../data-access/nx-service.service'
-import { NxUiComponent } from '../../ui/nx-ui/nx-ui.component';
-import { StoreModule } from '@ngrx/store';
-import * as fromNumbers from '../../data-access/reducers/numbers.reducer';
-import { EffectsModule } from '@ngrx/effects';
-import { NumbersEffects } from '../../data-access/effects/numbers.effects'
+import {ChangeDetectionStrategy, Component} from '@angular/core'
+import {CommonModule} from '@angular/common'
+import {NxServiceService} from '../../data-access/services/nx-service.service'
+import {NxUiComponent} from '../../ui/nx-ui/nx-ui.component'
+import {NxLibComponent} from 'nx-lib-import-path'
+import {NxUiDataComponent} from '../../ui/nx-ui-data/nx-ui-data.component'
+import {LetModule} from '@ngrx/component'
 
 @Component({
   selector: 'nx-template-nx-feature',
   standalone: true,
-  imports: [CommonModule, NxUiComponent],
+  imports: [CommonModule, NxUiComponent, NxLibComponent, NxUiDataComponent, LetModule],
   templateUrl: './nx-feature.component.html',
   styleUrls: ['./nx-feature.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,7 +19,6 @@ export class NxFeatureComponent {
   }
 
   updateNumber(newNumber: number) {
-    console.log("newNumber", newNumber)
     this.nxServiceService.subjectNumber.next(newNumber)
   }
 }

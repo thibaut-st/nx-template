@@ -1,7 +1,13 @@
-<p>nx-feature works!</p>
-<ng-container *ngIf="{value: nxServiceService.number$ | async} as number">
-  <nx-template-nx-ui
-    *ngIf="number.value !== null"
-    [number]="number.value"
-    (updateNumber)="updateNumber($event)"></nx-template-nx-ui>
-</ng-container>
+<h2>nx-feature works!</h2>
+
+<div>
+  <nx-template-nx-lib></nx-template-nx-lib>
+  <ng-container *ngIf="{value: nxServiceService.number$ | async} as number">
+    <nx-template-nx-ui
+      *ngIf="number.value !== null"
+      [number]="number.value"
+      (updateNumber)="updateNumber($event)"></nx-template-nx-ui>
+  </ng-container>
+</div>
+
+

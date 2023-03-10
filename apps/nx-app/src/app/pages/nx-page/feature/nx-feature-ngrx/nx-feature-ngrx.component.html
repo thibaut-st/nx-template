@@ -1,0 +1,24 @@
+<h2>nx-feature-ngrx works!</h2>
+
+<div
+  *ngrxLet="{
+    allNxData: nxDataFacade.allNxData$,
+    selectedNxData: nxDataFacade.selectedNxData$,
+    loaded: nxDataFacade.loaded$,
+    loading: nxDataFacade.loading$
+  } as nxData">
+  <button type="button" (click)="loadNxData()">Load data</button>
+
+  <ng-container *ngIf="nxData.loaded; else notLoaded">
+    <button type="button" (click)="addNxData()">Add data</button>
+    <nx-template-nx-ui-data
+      [allNxData]="nxData.allNxData"
+      [selectedNxData]="nxData.selectedNxData"
+      (selectedNxId)="nxDataFacade.select($event)">
+    </nx-template-nx-ui-data>
+  </ng-container>
+  <ng-template #notLoaded>
+    <ng-container *ngIf="nxData.loading; else empty"><p>Loading...</p></ng-container>
+    <ng-template #empty><p>Not loaded</p></ng-template>
+  </ng-template>
+</div>

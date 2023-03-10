@@ -1,6 +1,6 @@
-import { NxWelcomeComponent } from './nx-welcome.component';
-import { RouterModule } from '@angular/router';
-import { Component } from '@angular/core';
+import {NxWelcomeComponent} from './nx-welcome.component'
+import {RouterModule} from '@angular/router'
+import {Component} from '@angular/core'
 
 @Component({
   standalone: true,
@@ -10,5 +10,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'nx-app';
+  title = 'nx-app'
 }

@@ -1,1 +1,16 @@
-<router-outlet></router-outlet>
+<header>
+  <nav class="nav main-nav" aria-label="Main">
+    <ul role="list">
+      <li>
+        <a routerLink="/pages/nx-pages/nx-feature" routerLinkActive="active" ariaCurrentWhenActive="page">nx-feature</a>
+      </li>
+      <li>
+        <a routerLink="/pages/nx-pages/nx-feature-ngrx" routerLinkActive="active" ariaCurrentWhenActive="page">nx-feature-ngrx</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

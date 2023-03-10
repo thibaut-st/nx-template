@@ -1,0 +1,12 @@
+<p>nx-ui-data works!</p>
+
+<div>
+  <p>All Nx data</p>
+  <ul>
+    <li *ngFor="let data of allNxData">{{ data | json }} <button type="button" (click)="selectNxData(data.id)">select</button> </li>
+  </ul>
+</div>
+<div *ngIf="selectedNxData">
+  <p>Selected Nx data</p>
+  {{ selectedNxData | json }}
+</div>

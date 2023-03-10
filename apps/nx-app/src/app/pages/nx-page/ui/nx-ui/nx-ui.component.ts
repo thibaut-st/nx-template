@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
-import { CommonModule } from '@angular/common'
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core'
+import {CommonModule} from '@angular/common'
 
 @Component({
   selector: 'nx-template-nx-ui',
@@ -18,7 +18,6 @@ export class NxUiComponent {
   }
 
   decrease(number: number): void {
-    console.log("number - 1", number - 1)
     this.updateNumber.emit(number - 1)
   }
 }

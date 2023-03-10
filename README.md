@@ -93,6 +93,13 @@ Run `nx g ngrx origin --parent=apps/<app name>/src/main.ts --root --facade=false
 
 ## Add an NgRx feature to an app
 
-Run `nx g ngrx products --facade=true --root=false --route=<route 'path'> --parent=apps/<app name>/src/app/<path to 'xxx.routes.ts'>`
+Run `nx g ngrx <ngrx feature name> --facade=true --root=false --parent=apps/<app name>/src/app/<path to 'xxx.routes.ts'> --route=<route 'path'> --directory=<final directory name>`
 
 [//]: # 'Run `nx g f <path to ngrx folder from src/app>/<feature name> --group --project=<app name> --module=<path to component>/<component file>`'
+
+## Update NX project
+
+Run: 
+ - `nx migrate latest`
+ - `npm install`
+ - `nx migrate --run-migrations`
